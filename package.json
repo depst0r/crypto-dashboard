@@ -1,0 +1,45 @@
+{
+    "name": "crypto-dashboard",
+    "version": "1.0.0",
+    "description": "Modern FinTech Dashboard with real-time cryptocurrency data, interactive charts, and advanced analytics",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \\\"No tests yet\\\" && exit 0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/depst0r/crypto-dashboard.git"
+    },
+    "keywords": [
+        "fintech",
+        "cryptocurrency",
+        "dashboard",
+        "trading",
+        "alphavantage-api",
+        "tailwindcss",
+        "realtime-data",
+        "financial-dashboard",
+        "crypto-tracker",
+        "investment",
+        "trading-platform",
+        "market-data",
+        "financial-analytics",
+        "web-app",
+        "pwa"
+    ],
+    "author": "sergey_panteleenkoi",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/depst0r/crypto-dashboard/issues"
+    },
+    "homepage": "https://github.com/depst0r/crypto-dashboard#readme",
+    "devDependencies": {
+        "postcss-pxtorem": "^6.1.0",
+        "sass": "^1.93.2",
+        "vite": "^7.1.12"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.16",
+        "tailwindcss": "^4.1.16"
+    }
+}

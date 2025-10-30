@@ -1,0 +1,21 @@
+{
+    "name": "Crypto Dashboard",
+    "short_name": "CryptoDash",
+    "description": "Real-time cryptocurrency trading dashboard with live market data",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#3b82f6",
+    "orientation": "portrait-primary",
+    "icons": [{
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
