@@ -1,0 +1,71 @@
+// *,
+// ::after,
+// ::before {
+//     box-sizing: border-box;
+// }
+// html {
+//     scroll-behavior: smooth;
+// }
+// body::selection {
+//     background-color: rgba(255, 238, 0, 0.527) !important;
+// }
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// figure,
+// p,
+// ol,
+// ul {
+//     margin: 0 !important;
+// }
+// ol[role="list"],
+// ul[role="list"] {
+//     list-style: none;
+//     padding-inline: 0;
+// }
+// ul {
+//     margin: 0;
+//     padding: 0;
+// }
+// li {
+//     list-style: none;
+// }
+// a {
+//     text-decoration: none;
+// }
+// h1,
+// h2,
+// h3,
+// h4,
+// h5 {
+//     font-size: inherit;
+//     font-weight: inherit;
+// }
+// img {
+//     display: block;
+//     max-inline-size: 100%;
+//     user-select: none;
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     -webkit-user-drag: none;
+// }
+// body {
+//     margin: 0 auto;
+//     max-width: 1440px;
+// }
+// // .container {
+// //     padding: 0 16px;
+// // }
+// // @media screen and (min-width: 1024px) {
+// //     .container {
+// //         padding: 0 24px;
+// //     }
+// // }
+// // @media screen and (min-width: 1440px) {
+// //     .container {
+// //         padding: 0 165px;
+// //     }
+// // }
