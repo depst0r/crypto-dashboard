@@ -12,15 +12,55 @@
     <link rel="manifest" href="/site.webmanifest">
     <script defer type="module" src="/src/js/app.js"></script>
     <script async src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
-<header class="header">
-    <div class="px-6">
-        <h1>test</h1>
-    </div>
-</header>
 
-<body>
 
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <header class="header bg-gray-800 border-t border-gray-700">
+        <div class="px-6 flex justify-around py-3">
+            <div class="header__nav">
+                <div class="header__nav-logo">
+                    <img src="/src/icon/logo.png" alt="logo">
+                </div>
+                <nav class="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700">
+                    <div class="flex justify-around py-3">
+                        <a href="#" class="flex flex-col items-center text-blue-400">
+                            <i data-feather="home" class="w-5 h-5"></i>
+                            <span class="text-xs mt-1">Home</span>
+                        </a>
+                        <a href="#" class="flex flex-col items-center text-gray-400">
+                            <i data-feather="pie-chart" class="w-5 h-5"></i>
+                            <span class="text-xs mt-1">Stats</span>
+                        </a>
+                        <a href="#" class="flex flex-col items-center text-gray-400">
+                            <i data-feather="dollar-sign" class="w-5 h-5"></i>
+                            <span class="text-xs mt-1">Trade</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="grid grid-cols-12 gap-4 p-4">
+            <div class="col-span-12 md:col-span-6 xl:col-span-3">
+                <div class="bg-gray-800 rounded-2xl p-6 h-40"></div>
+            </div>
+            <div class="col-span-12 md:col-span-6 xl:col-span-3">
+                <div class="bg-gray-800 rounded-2xl p-6 h-40"></div>
+            </div>
+            <div class="col-span-12 md:col-span-6 xl:col-span-3">
+                <div class="bg-gray-800 rounded-2xl p-6 h-40"></div>
+            </div>
+            <div class="col-span-12 md:col-span-6 xl:col-span-3">
+                <div class="bg-gray-800 rounded-2xl p-6 h-40"></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        feather.replace();
+    </script>
 </body>
 
 </html>
