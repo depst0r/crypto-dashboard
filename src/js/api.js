@@ -14,9 +14,29 @@ export async function getCryptoPrice(cryptoSymbol) {
         })
 
         const data = await response.json();
-        console.log(' Данные от API:', data);
 
-        return data;
+        if (!data) {
+            apiDataResponse.forEach(result => {
+                result.innerHTML = `❌ <span class="text-sm text-gray-500">Нет данных от API:</span>`;
+            })
+            return;
+        }
+
+        const cryptoObject = {}
+
+        if (data['Realtime Currency Exchange Rate']) {
+            const crypto = data['Realtime Currency Exchange Rate'];
+
+            const cryptoObject = {
+                symbol: crypto['1. From_Currency Code'],
+                name: crypto['2. From_Currency Name'],
+                price: parseFloat(crypto['5. Exchange Rate']),
+                lastUpdated: crypto['6. Last Refreshed'],
+                timeZone: crypto['7. Time Zone']
+            };
+        }
+
+        return cryptoObject;
 
     } catch (error) {
         apiDataResponse.forEach(res => {

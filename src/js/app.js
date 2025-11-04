@@ -7,9 +7,7 @@ import "tailwindcss";
 window.addEventListener('DOMContentLoaded', () => {
     const cryptocurrencies = ['BTC', 'ETH', 'ADA', 'DOGE', 'LTC', 'XRP', 'DOT', 'LINK'];
 
-    console.log(' Запускаем тест API...');
-
     getCryptoPrice('BTC').then(data => {
-        console.log(' Результат:', data);
-    });
+        const { name, symbol, price, lastUpdated } = data;
+    })
 });
