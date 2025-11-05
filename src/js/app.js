@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     const cryptoSelect = form.querySelector('#crypto-select');
     const cryptoIcon = document.getElementById('crypto-icon');
+    const cyrrencySelect = form.querySelector('#cyrrency-select');
+    const currencyIcon = document.getElementById('cyrrency-icon');
 
     const mainCryptocurrencies = ['BTC', 'ETH', 'ADA'];
 
@@ -18,12 +20,14 @@ window.addEventListener('DOMContentLoaded', () => {
         'ADA': 'https://assets.coingecko.com/coins/images/975/small/cardano.png'
     };
 
+    const fiatIcons = {
+        'USD': 'https://flagcdn.com/us.svg',
+        'EUR': 'https://flagcdn.com/eu.svg',
+    };
+
     form.addEventListener('submit', e => {
         e.preventDefault()
-
     });
-
-
 
     cryptoSelect.addEventListener('change', function () {
         const selectedCrypto = this.value;
@@ -33,11 +37,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     cryptoIcon.src = cryptoIcons['BTC'];
 
+    cyrrencySelect.addEventListener('change', function () {
+        const selectedCyrrency = this.value;
+        currencyIcon.src = fiatIcons[selectedCyrrency];
+        currencyIcon.alt = selectedCyrrency;
+    });
 
+    currencyIcon.src = fiatIcons['USD'];
 
     mainCryptocurrencies.forEach(symbol => {
         getCryptoPrice(symbol).then(data => {
-            console.log(data.symbol)
             const card = document.createElement('div');
             card.className = 'col-span-12 md:col-span-4 xl:col-span-3';
             card.innerHTML = `
@@ -63,7 +72,4 @@ window.addEventListener('DOMContentLoaded', () => {
             cards.insertAdjacentHTML('afterbegin', card.outerHTML);
         });
     });
-
-
-
 })

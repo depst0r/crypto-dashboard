@@ -9,7 +9,6 @@ export async function getCryptoPrice(cryptoSymbol) {
 
 
         const response = await fetch(url);
-        console.log(response)
 
         apiDataResponse.forEach(res => {
             res.innerHTML = `✔️ <span class="text-sm text-gray-500">Статус ответа:</span> <span class="text-sm text-green-500">${response.status}</span>`;
