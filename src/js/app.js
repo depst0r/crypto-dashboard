@@ -5,13 +5,57 @@ import "tailwindcss";
 
 
 window.addEventListener('DOMContentLoaded', () => {
-
     const cards = document.querySelector('.cards');
+    const form = document.querySelector('form');
+    const cryptoSelect = form.querySelector('#crypto-select');
+    const cryptoIcon = document.getElementById('crypto-icon');
+    const cyrrencySelect = form.querySelector('#cyrrency-select');
+    const currencyIcon = document.getElementById('cyrrency-icon');
+    const tradeBtnText = form.querySelector('.crypto-btn');
+
     const mainCryptocurrencies = ['BTC', 'ETH', 'ADA'];
+
+    const cryptoIcons = {
+        'BTC': 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png',
+        'ETH': 'https://assets.coingecko.com/coins/images/279/small/ethereum.png',
+        'ADA': 'https://assets.coingecko.com/coins/images/975/small/cardano.png'
+    };
+
+    const fiatIcons = {
+        'USD': 'https://flagcdn.com/us.svg',
+        'EUR': 'https://flagcdn.com/eu.svg',
+    };
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+    });
+
+    cryptoSelect.addEventListener('change', function() {
+        const selectedCrypto = this.value;
+        cryptoIcon.src = cryptoIcons[selectedCrypto];
+        cryptoIcon.alt = selectedCrypto;
+
+        if (selectedCrypto === 'BTC') {
+            tradeBtnText.textContent = 'Bitcoin';
+        } else if (selectedCrypto === 'ETH') {
+            tradeBtnText.textContent = 'Ethereum';
+        } else if (selectedCrypto === 'ADA') {
+            tradeBtnText.textContent = 'Cardano';
+        }
+    });
+
+    cryptoIcon.src = cryptoIcons['BTC'];
+
+    cyrrencySelect.addEventListener('change', function() {
+        const selectedCyrrency = this.value;
+        currencyIcon.src = fiatIcons[selectedCyrrency];
+        currencyIcon.alt = selectedCyrrency;
+    });
+
+    currencyIcon.src = fiatIcons['USD'];
 
     mainCryptocurrencies.forEach(symbol => {
         getCryptoPrice(symbol).then(data => {
-            console.log(data.symbol)
             const card = document.createElement('div');
             card.className = 'col-span-12 md:col-span-4 xl:col-span-3';
             card.innerHTML = `
