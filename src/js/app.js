@@ -5,9 +5,35 @@ import "tailwindcss";
 
 
 window.addEventListener('DOMContentLoaded', () => {
-
     const cards = document.querySelector('.cards');
+    const form = document.querySelector('form');
+    const cryptoSelect = form.querySelector('#crypto-select');
+    const cryptoIcon = document.getElementById('crypto-icon');
+
     const mainCryptocurrencies = ['BTC', 'ETH', 'ADA'];
+
+    const cryptoIcons = {
+        'BTC': 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png',
+        'ETH': 'https://assets.coingecko.com/coins/images/279/small/ethereum.png',
+        'ADA': 'https://assets.coingecko.com/coins/images/975/small/cardano.png'
+    };
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+
+    });
+
+
+
+    cryptoSelect.addEventListener('change', function () {
+        const selectedCrypto = this.value;
+        cryptoIcon.src = cryptoIcons[selectedCrypto];
+        cryptoIcon.alt = selectedCrypto;
+    });
+
+    cryptoIcon.src = cryptoIcons['BTC'];
+
+
 
     mainCryptocurrencies.forEach(symbol => {
         getCryptoPrice(symbol).then(data => {
@@ -37,4 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
             cards.insertAdjacentHTML('afterbegin', card.outerHTML);
         });
     });
+
+
+
 })
