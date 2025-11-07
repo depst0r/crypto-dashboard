@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const tradeBtnText = document.querySelector('.crypto-btn');
     const cryptoAmount = document.getElementById('crypto-amount');
     const priceResult = document.getElementById('price-result');
+    const transaction = document.querySelector('#transaction');
 
     const mainCryptocurrencies = ['BTC', 'ETH', 'ADA'];
 
@@ -33,7 +34,22 @@ window.addEventListener('DOMContentLoaded', () => {
         'ADA': 0.5
     };
 
-    const buyHistory = [];
+    const buyHistory = [
+        {
+            amount: 0.005623,
+            crypto: "BTC",
+            currency: "USD",
+            date: "07.11.2025, 12:46:17",
+            price: 253.04,
+        },
+        {
+            amount: 11.012,
+            crypto: "ADA",
+            currency: "USD",
+            date: "07.11.2025, 13:14:46",
+            price: 5.51,
+        }
+    ];
 
     form.addEventListener('submit', e => {
         e.preventDefault();
@@ -48,6 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         buyHistory.push(newPurchase);
         console.log(buyHistory)
+        form.reset();
     });
 
     function calculatePrice() {
