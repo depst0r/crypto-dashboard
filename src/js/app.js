@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
         cryptoIcon.alt = selectedCrypto;
     });
 
-    cryptoIcon.src = cryptoIcons['BTC'];
+
 
     cyrrencySelect.addEventListener('change', function () {
         const selectedCyrrency = this.value;
@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
         currencyIcon.alt = selectedCyrrency;
     });
 
+    cryptoIcon.src = cryptoIcons['BTC'];
     currencyIcon.src = fiatIcons['USD'];
 
     mainCryptocurrencies.forEach(symbol => {
