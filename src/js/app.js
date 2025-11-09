@@ -60,10 +60,12 @@ window.addEventListener('DOMContentLoaded', () => {
             date: new Date().toLocaleString()
         };
 
+
         buyHistory.push(newPurchase);
-        console.log(buyHistory)
+        buyCrupto()
         form.reset();
     });
+
 
     function buyCrupto() {
 
@@ -75,11 +77,11 @@ window.addEventListener('DOMContentLoaded', () => {
             transaction.innerHTML += `
     <div class="transcation-buy flex flex-row justify-between">
         <div class="transcation-crupto flex flex-col">
-            <span class="font-medium text-lg text-white">Buy ${data.crypto}</span>
+            <span class="font-medium text-white text-[15px]">Buy ${data.crypto}</span>
             <span class="font-normal text-xs text-gray-500">${data.date}</span>
         </div>
         <div class="transcation-trade flex flex-col text-end">
-            <span class="font-medium text-lg text-white">${data.amount}</span>
+            <span class="text-[15px] text-green-600 font-semibold">+${data.amount}</span>
             <span class="font-normal text-xs text-gray-500">${data.currency} ${data.price}</span>
         </div>
     </div>
@@ -93,16 +95,31 @@ window.addEventListener('DOMContentLoaded', () => {
         const crypto = cryptoSelect.value;
         const amount = parseFloat(cryptoAmount.value) || 0;
 
-        if (amount <= 0) {
-            priceResult.value = '0';
+        if (isNaN(amount) || amount <= 0) {
+            priceResult.value = '';
             return;
         }
-
 
         const price = testPrices[crypto];
         const total = amount * price;
         priceResult.value = total.toFixed(2);
     }
+
+    function calculateCryptoFromUSD() {
+        const crypto = cryptoSelect.value;
+        const usdAmount = parseFloat(priceResult.value) || 0;
+
+        if (isNaN(amount) || usdAmount <= 0) {
+            cryptoAmount.value = '';
+            return;
+        }
+
+        const price = testPrices[crypto];
+        const cryptoAmountResult = usdAmount / price;
+        cryptoAmount.value = cryptoAmountResult.toFixed(6);
+    }
+
+    priceResult.addEventListener('input', calculateCryptoFromUSD);
 
     cryptoSelect.addEventListener('change', function () {
         const selectedCrypto = this.value;
