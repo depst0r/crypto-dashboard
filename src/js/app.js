@@ -12,7 +12,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const tradeBtnText = document.querySelector('.crypto-btn');
     const cryptoAmount = document.getElementById('crypto-amount');
     const priceResult = document.getElementById('price-result');
-    const transaction = document.querySelector('#transaction');
 
     const mainCryptocurrencies = ['BTC', 'ETH', 'ADA'];
 
@@ -34,21 +33,20 @@ window.addEventListener('DOMContentLoaded', () => {
         'ADA': 0.5
     };
 
-    const buyHistory = [
-        {
-            amount: 0.005623,
-            crypto: "BTC",
-            currency: "USD",
-            date: "07.11.2025, 12:46:17",
-            price: 253.04,
-        },
-        {
-            amount: 11.012,
-            crypto: "ADA",
-            currency: "USD",
-            date: "07.11.2025, 13:14:46",
-            price: 5.51,
-        }
+    const buyHistory = [{
+        amount: 0.005623,
+        crypto: "BTC",
+        currency: "USD",
+        date: "07.11.2025, 12:46:17",
+        price: 253.04,
+    },
+    {
+        amount: 11.012,
+        crypto: "ADA",
+        currency: "USD",
+        date: "07.11.2025, 13:14:46",
+        price: 5.51,
+    }
     ];
 
     form.addEventListener('submit', e => {
@@ -66,6 +64,30 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log(buyHistory)
         form.reset();
     });
+
+    function buyCrupto() {
+
+        const transaction = document.querySelector('.transaction');
+
+        transaction.innerHTML = '';
+
+        buyHistory.map(data => {
+            transaction.innerHTML += `
+    <div class="transcation-buy flex flex-row justify-between">
+        <div class="transcation-crupto flex flex-col">
+            <span class="font-medium text-lg text-white">Buy ${data.crypto}</span>
+            <span class="font-normal text-xs text-gray-500">${data.date}</span>
+        </div>
+        <div class="transcation-trade flex flex-col text-end">
+            <span class="font-medium text-lg text-white">${data.amount}</span>
+            <span class="font-normal text-xs text-gray-500">${data.currency} ${data.price}</span>
+        </div>
+    </div>
+            `
+        })
+    };
+
+    buyCrupto()
 
     function calculatePrice() {
         const crypto = cryptoSelect.value;
