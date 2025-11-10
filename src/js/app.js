@@ -73,7 +73,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
         transaction.innerHTML = '';
 
-        buyHistory.map(data => {
+        const sortedHistory = [...buyHistory].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+        sortedHistory.map(data => {
             transaction.innerHTML += `
     <div class="transcation-buy flex flex-row justify-between">
         <div class="transcation-crupto flex flex-col">
