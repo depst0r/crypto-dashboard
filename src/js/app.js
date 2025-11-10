@@ -49,6 +49,31 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     ];
 
+
+    function showError(message) {
+        const errorModal = document.getElementById('errorModal');
+        const errorMessage = document.getElementById('errorMessage');
+
+        errorMessage.textContent = message;
+        errorModal.classList.remove('hidden');
+    }
+
+
+    function hideError() {
+        const errorModal = document.getElementById('errorModal');
+        errorModal.classList.add('hidden');
+    }
+
+
+    document.getElementById('errorClose').addEventListener('click', hideError);
+
+
+    document.getElementById('errorModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            hideError();
+        }
+    });
+
     form.addEventListener('submit', e => {
         e.preventDefault();
 
@@ -56,19 +81,19 @@ window.addEventListener('DOMContentLoaded', () => {
         const price = parseFloat(priceResult.value);
 
         if (!cryptoAmount.value.trim() || !priceResult.value.trim()) {
-            alert('Заполните все поля');
+            showError('Заполните все поля');
             return;
         }
 
 
         if (isNaN(amount) || isNaN(price)) {
-            alert('Введите корректные числа');
+            showError('Введите корректные числа');
             return;
         }
 
 
         if (amount <= 0 || price <= 0) {
-            alert('Значения должны быть больше 0');
+            showError('Значения должны быть больше 0');
             return;
         }
 
