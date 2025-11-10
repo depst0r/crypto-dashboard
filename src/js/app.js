@@ -52,6 +52,26 @@ window.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', e => {
         e.preventDefault();
 
+        const amount = parseFloat(cryptoAmount.value);
+        const price = parseFloat(priceResult.value);
+
+        if (!cryptoAmount.value.trim() || !priceResult.value.trim()) {
+            alert('Заполните все поля');
+            return;
+        }
+
+
+        if (isNaN(amount) || isNaN(price)) {
+            alert('Введите корректные числа');
+            return;
+        }
+
+
+        if (amount <= 0 || price <= 0) {
+            alert('Значения должны быть больше 0');
+            return;
+        }
+
         const newPurchase = {
             currency: cyrrencySelect.value,
             crypto: cryptoSelect.value,
@@ -61,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
         };
 
 
-        buyHistory.push(newPurchase);
+        buyHistory.unshift(newPurchase);
         buyCrupto()
         form.reset();
     });
@@ -73,9 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         transaction.innerHTML = '';
 
-        const sortedHistory = [...buyHistory].sort((a, b) => new Date(b.date) - new Date(a.date))
-
-        sortedHistory.map(data => {
+        buyHistory.map(data => {
             transaction.innerHTML += `
     <div class="transcation-buy flex flex-row justify-between">
         <div class="transcation-crupto flex flex-col">
