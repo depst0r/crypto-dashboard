@@ -212,5 +212,39 @@ window.addEventListener('DOMContentLoaded', () => {
             cards.insertAdjacentHTML('afterbegin', cardHTML);
         });
     });
+
+    function createBarChart() {
+        const ctx = document.getElementById('cryptoChart').getContext('2d');
+
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
+                datasets: [{
+                    label: 'Price Change',
+                    data: [200, -400, 700, 300, 100, 200, 100],
+                    backgroundColor: function (context) {
+                        const value = context.dataset.data[context.dataIndex];
+                        return value >= 0 ? '#10b981' : '#ef4444';
+                    },
+                    borderColor: function (context) {
+                        const value = context.dataset.data[context.dataIndex];
+                        return value >= 0 ? '#10b981' : '#ef4444';
+                    },
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: '#374151' }, ticks: { color: '#9ca3af' } },
+                    y: { grid: { color: '#374151' }, ticks: { color: '#9ca3af' } }
+                }
+            }
+        });
+    }
+    createBarChart()
     calculatePrice();
 });
