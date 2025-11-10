@@ -8,9 +8,6 @@ author: sergey_panteleenko
 
 **[Посмотреть живую демо](https://crypto-dashboard-chi-eight.vercel.app)**
 
-![Crypto Dashboard Preview](https://via.placeholder.com/800x400/1f2937/ffffff?text=Crypto+Dashboard+Preview)
-*Скриншот главной страницы дашборда*
-
 ## ✨ Особенности
 
 - 📊 **Отслеживание курсов** в реальном времени
